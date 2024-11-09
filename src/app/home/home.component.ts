@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-home',
@@ -9,5 +10,19 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  homeRecipes:any = []
 
+  constructor(private api:ApiService){}
+
+  ngOnInit(){
+    this.getAllHomeRecipes()
+  }
+
+  getAllHomeRecipes(){
+    this.api.getAllRecipesAPI().subscribe((res:any)=>{
+      this.homeRecipes = res.slice(0,6)
+      console.log(this.homeRecipes);
+      
+    })
+  }
 }

@@ -4,127 +4,66 @@
             <div class=" container">
                 <h4 class="">Filter</h4>
                 <!-- cuisine -->
-                 <h6 class="btn mt-5">All</h6> <br>
+                 <button (click)="getAllRecipes()" class="btn mt-5">All</button> <br>
                 <h6 class="btn dropdown-toggle"  data-bs-toggle="collapse" data-bs-target="#collapseExample" >
                     Cuisine Type
                 </h6> <br>
                 <div class="collapse" id="collapseExample">
-                    <p class="btn">Italian</p>
-                    <p class="btn">Asian</p>
-                    <p class="btn">American</p>
-                    <p class="btn">Mexican</p>
-                    <p class="btn">Pakistani</p>
-                    <p class="btn">Japanese</p>
-                    <p class="btn">Thai</p>
-                    <p class="btn">Indian</p>
-                    <p class="btn">Turkish</p>
-                    <p class="btn">Smoothie</p>
+                    <button (click)="getRecipes('cuisine','Italian')" class="btn">Italian</button>
+                    <button (click)="getRecipes('cuisine','Asian')" class="btn">Asian</button>
+                    <button (click)="getRecipes('cuisine','American')" class="btn">American</button>
+                    <button (click)="getRecipes('cuisine','Mexican')" class="btn">Mexican</button>
+                    <button (click)="getRecipes('cuisine','Pakistani')" class="btn">Pakistani</button>
+                    <button (click)="getRecipes('cuisine','Japnanese')" class="btn">Japnanese</button>
+                    <button (click)="getRecipes('cuisine','Thai')" class="btn">Thai</button>
+                    <button (click)="getRecipes('cuisine','Indian')" class="btn">Indian</button>
+                    <button (click)="getRecipes('cuisine','Turkish')" class="btn">Turkish</button>
+                    <button (click)="getRecipes('cuisine','Smoothie')" class="btn">Smoothie</button>
                 </div>
                 <!-- mealType -->
                 <h6 class="btn dropdown-toggle"  data-bs-toggle="collapse" data-bs-target="#collapseExamplemealType" >
                     Meal Type
                 </h6>
                 <div class="collapse" id="collapseExamplemealType">
-                    <p class="btn">Dinner</p> 
-                    <p class="btn">Lunch</p>
-                    <p class="btn">Dessert</p>
-                    <p class="btn">Snack</p>
-                    <p class="btn">Appetizer</p>
-                    <p class="btn">Salad</p>
-                    <p class="btn">Breakfast</p>
-                    <p class="btn">Beverage</p>
+                    <button (click)="getRecipes('mealType','Dinner')" class="btn">Dinner</button> 
+                    <button (click)="getRecipes('mealType','Lunch')" class="btn">Lunch</button>
+                    <button (click)="getRecipes('mealType','Dessert')" class="btn">Dessert</button>
+                    <button (click)="getRecipes('mealType','Snack')" class="btn">Snack</button>
+                    <button (click)="getRecipes('mealType','Appetizer')" class="btn">Appetizer</button>
+                    <button (click)="getRecipes('mealType','Salad')" class="btn">Salad</button>
+                    <button (click)="getRecipes('mealType','Breakfast')" class="btn">Breakfast</button>
+                    <button (click)="getRecipes('mealType','Beverage')" class="btn">Beverage</button>
                 </div>
             </div>
         </div>
         <div class="col-lg-8">
             <div class="d-flex justify-content-between align-items-center">
                 <h1>All Recipes</h1>
-                <input  type="text" placeholder="Search your recipe here" class="form-control w-50">
+                <input  [(ngModel)]="searchRecipe"  type="text" placeholder="Search your recipe here" class="form-control w-50">
             </div>
             <!-- all recipes -->
             <div class="row  my-3">
-                <div class="col-lg-4">
-                    <div class=" p-3" >
-                        <img src="https://cdn.dummyjson.com/recipe-images/1.webp" class="card-img-top rounded" alt="...">
-                        <div class="card-body mt-2">
-                          <h5 class="card-title">Card title</h5>
-                          <p>Cuisine</p>
+                @if (allRecipes.length>0) {
+                  @for (recipe of allRecipes | search : 'name' : searchRecipe | paginate: { itemsPerPage: 9, currentPage: p } ; track $index) {
+                    <div class="col-lg-4">
+                      <div class=" p-3" >
+                          <img [src]="recipe.image" class="card-img-top rounded" alt="...">
+                          <div class="card-body mt-2">
+                            <h5 class="card-title">{{recipe.name}}</h5>
+                            <p>Cuisine : {{recipe.cuisine}} </p>
+                          </div>
                         </div>
-                      </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class=" p-3" >
-                        <img src="https://cdn.dummyjson.com/recipe-images/1.webp" class="card-img-top rounded" alt="...">
-                        <div class="card-body mt-2">
-                          <h5 class="card-title">Card title</h5>
-                          <p>Cuisine</p>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class=" p-3" >
-                        <img src="https://cdn.dummyjson.com/recipe-images/1.webp" class="card-img-top rounded" alt="...">
-                        <div class="card-body mt-2">
-                          <h5 class="card-title">Card title</h5>
-                          <p>Cuisine</p>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class=" p-3" >
-                        <img src="https://cdn.dummyjson.com/recipe-images/1.webp" class="card-img-top rounded" alt="...">
-                        <div class="card-body mt-2">
-                          <h5 class="card-title">Card title</h5>
-                          <p>Cuisine</p>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class=" p-3" >
-                        <img src="https://cdn.dummyjson.com/recipe-images/1.webp" class="card-img-top rounded" alt="...">
-                        <div class="card-body mt-2">
-                          <h5 class="card-title">Card title</h5>
-                          <p>Cuisine</p>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class=" p-3" >
-                        <img src="https://cdn.dummyjson.com/recipe-images/1.webp" class="card-img-top rounded" alt="...">
-                        <div class="card-body mt-2">
-                          <h5 class="card-title">Card title</h5>
-                          <p>Cuisine</p>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class=" p-3" >
-                        <img src="https://cdn.dummyjson.com/recipe-images/1.webp" class="card-img-top rounded" alt="...">
-                        <div class="card-body mt-2">
-                          <h5 class="card-title">Card title</h5>
-                          <p>Cuisine</p>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class=" p-3" >
-                        <img src="https://cdn.dummyjson.com/recipe-images/1.webp" class="card-img-top rounded" alt="...">
-                        <div class="card-body mt-2">
-                          <h5 class="card-title">Card title</h5>
-                          <p>Cuisine</p>
-                        </div>
-                      </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class=" p-3" >
-                        <img src="https://cdn.dummyjson.com/recipe-images/1.webp" class="card-img-top rounded" alt="...">
-                        <div class="card-body mt-2">
-                          <h5 class="card-title">Card title</h5>
-                          <p>Cuisine</p>
-                        </div>
-                      </div>
-                </div>
+                  </div>
+                  }
+                  @if ((allRecipes | search : 'name' : searchRecipe).length == 0 ) {
+                    <div class="fw-bolder text-danger fs-3 my-4 text-center">Recipe Not Found!!!</div>
+                  }
+                }@else {
+                  <div class="fw-bolder text-danger fs-3 my-4 text-center">Recipe Not Found!!!</div>
+                }
+                
             </div>
+            <div class="text-center mt-5"><pagination-controls (pageChange)="p = $event"></pagination-controls></div>
         </div>
     </div>
 </div>
