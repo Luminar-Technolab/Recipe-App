@@ -12,4 +12,35 @@ export class ApiService {
   getAllRecipesAPI(){
    return this.http.get(`${this.server_url}/get-all-recipes`)
   }
+
+  //add-testimony
+  addTestimony(data:any){
+    return this.http.post(`${this.server_url}/add-testimony`,data)
+  }
+
+  //register
+  register(data:any){
+    return this.http.post(`${this.server_url}/register`,data)
+  }
+
+  //login
+  login(data:any){
+    return this.http.post(`${this.server_url}/login`,data)
+  }
+
+  //recipes/:id/view
+  getARecipeAPI(id:string){
+    return this.http.get(`${this.server_url}/recipes/${id}/view`)
+   }
+
+   //get-related-recipes
+   getAllRelatedRecipes(cuisine:string){
+    console.log(cuisine);
+    
+    return this.http.get(`${this.server_url}/get-related-recipes?cuisine=${cuisine}`)
+   }
+   //get-all-testimony
+   getAllTestimony(){
+    return this.http.get(`${this.server_url}/get-all-testimony`)
+   }
 }

@@ -1,3 +1,5 @@
+<app-header></app-header>
+
 <div class="container ">
     <!-- landing -->
      <div class="row p-5 bg-success">
@@ -60,30 +62,18 @@
        <div class="text-center my-5">
         <h1>Client Testimonials</h1>
         <div class="row my-5">
-          <div class="col-lg-4">
-            <div class="card ms-5" style="width: 20rem;" >
-              <div class="card-body">
-                <h5 class="card-title">Name</h5>
-                <p style="text-align: justify;" class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero laudantium modi officiis consectetur enim nisi ratione unde ducimus, quaerat deserunt? Vero explicabo impedit nemo iste nisi similique saepe ducimus recusandae!</p>
+          @for (testimony of allTestimony; track $index) {
+            <div class="col-lg-4">
+              <div class="card ms-5 shadow" style="width: 20rem;" >
+                <div class="card-body">
+                  <h5 class="card-title">{{testimony.name}}</h5>
+                  <p style="text-align: justify;" class="card-text w-100">{{testimony.message}}</p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="card" style="width: 20rem;">
-              <div class="card-body">
-                <h5 class="card-title">Name</h5>
-                <p style="text-align: justify;" class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero laudantium modi officiis consectetur enim nisi ratione unde ducimus, quaerat deserunt? Vero explicabo impedit nemo iste nisi similique saepe ducimus recusandae!</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="card" style="width: 20rem;" >
-              <div class="card-body">
-                <h5 class="card-title">Name</h5>
-                <p style="text-align: justify;" class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero laudantium modi officiis consectetur enim nisi ratione unde ducimus, quaerat deserunt? Vero explicabo impedit nemo iste nisi similique saepe ducimus recusandae!</p>
-              </div>
-            </div>
-          </div>
+          }
+          
+         
         </div>
        </div>
 </div>

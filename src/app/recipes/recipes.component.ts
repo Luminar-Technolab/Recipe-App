@@ -3,11 +3,13 @@ import { ApiService } from '../services/api.service';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe } from '../pipes/search.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { HeaderComponent } from '../header/header.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipes',
   standalone: true,
-  imports: [FormsModule,SearchPipe,NgxPaginationModule],
+  imports: [FormsModule,SearchPipe,NgxPaginationModule,HeaderComponent],
   templateUrl: './recipes.component.html',
   styleUrl: './recipes.component.css'
 })
@@ -15,7 +17,7 @@ export class RecipesComponent {
   p: number = 1;
   allRecipes:any = []
   searchRecipe:string = ""
-  constructor(private api:ApiService){}
+  constructor(private api:ApiService,private router:Router){}
 
   ngOnInit(){
     this.getAllRecipes()
@@ -30,5 +32,13 @@ export class RecipesComponent {
 
   getRecipes(recipeType:string,recipeName:any){
     this.allRecipes = this.allRecipes.filter((item:any)=>item[recipeType].includes(recipeName))
+  }
+
+  viewRecipe(recipeId:string){
+    if(sessionStorage.getItem("token")){
+      this.router.navigateByUrl(`${recipeId}/view-recipe`)
+    }else{
+      alert("Please login to view the recipe in detail!!!")
+    }
   }
 }

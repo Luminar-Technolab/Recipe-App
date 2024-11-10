@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="container">
     <div style="height: 350px;" class="bg-success row  align-items-center ">
         <div class="col-lg-2"></div>
@@ -51,17 +52,17 @@
             <div class="shadow p-5 border rounded">
                 <h3>Client Testimony</h3>
                 <div class="mb-3 mt-5">
-                    <input placeholder="Name" type="text" class="form-control">
+                    <input [(ngModel)]="name" placeholder="Name" type="text" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <input placeholder="E Mail" type="text" class="form-control">
+                    <input [(ngModel)]="email" placeholder="E Mail" type="text" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <textarea placeholder="Message" type="text" class="form-control"></textarea>
+                    <textarea [(ngModel)]="message" placeholder="Message" type="text" class="form-control"></textarea>
                 </div>
                 <p class="my-4 text-secondary">By Submitting, your agreeing the terms and condition of our website. We may use your details in our site.</p>
                 <div class="float-end">
-                    <button class="btn btn-success">Submit</button>
+                    <button (click)="addTestimony()" class="btn btn-success">Submit</button>
                 </div>
             </div>
         </div>
