@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -42,5 +42,27 @@ export class ApiService {
    //get-all-testimony
    getAllTestimony(){
     return this.http.get(`${this.server_url}/get-all-testimony`)
+   }
+    //append token to http header
+  appendToken(){
+    const token = sessionStorage.getItem("token")
+    let headers = new HttpHeaders()
+    if(token){
+      headers = headers.append("Authorization",`Bearer ${token}`)
+    }
+    return {headers}
+  }
+   //add-saved-recipe
+   saveRecipeAPI(recipe:any){
+    return this.http.post(`${this.server_url}/add-saved-recipe`,recipe,this.appendToken())
+   }
+   //all-saved-recipe
+   getAllSavedRecipeAPI (){
+    return this.http.get(`${this.server_url}/all-saved-recipe`,this.appendToken())
+   }
+
+   //id/remove-saved-recipe
+   deleteSavedRecipeAPI (id:any){
+    return this.http.delete(`${this.server_url}/${id}/remove-saved-recipe`,this.appendToken())
    }
 }

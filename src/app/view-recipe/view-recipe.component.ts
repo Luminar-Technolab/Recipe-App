@@ -38,4 +38,18 @@ export class ViewRecipeComponent {
       
     })
   }
+
+  saveRecipe(){
+    const {_id,name,cuisine,image} = this.recipe
+    this.api.saveRecipeAPI({id:_id,name,cuisine,image}).subscribe({
+      next:((res:any)=>{
+        alert("Item Added to your Saved Recipe Collection")
+      }),
+      error:((err:any)=>{
+        console.log(err);
+        
+        alert(err.error)
+      })
+    })
+  }
 }
