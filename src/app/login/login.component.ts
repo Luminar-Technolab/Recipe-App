@@ -24,7 +24,7 @@ export class LoginComponent {
         this.router.navigateByUrl('/')
       }),
       error:((err:any)=>{
-        alert(err)
+        alert(err.error)
       })
     })
   }

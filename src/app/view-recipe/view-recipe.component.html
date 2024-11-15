@@ -1,17 +1,17 @@
 <app-header></app-header>
 
 <div class="container my-5">
-    <div class="row mb-5">
+    <div   class="row mb-5">
         <div class="col-lg-6">
             <a routerLink="/recipes">Back To All Recipes</a>
             <br>
             <img  class="img-fluid my-5" [src]="recipe.image" alt="no image">
             <div class="d-flex justify-content-between">
-                <button class="btn btn-success">Download</button>
+                <button (click)="generatePDF()" class="btn btn-success">Download</button>
                 <button (click)="saveRecipe()" class="btn btn-primary me-5">Save</button>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div id="downloadRecipe" class="col-lg-6">
             <h1>{{recipe.name}}</h1>
             <div class="d-flex justify-content-between my-5">
                 <p class="fw-bolder">Cuisine: {{recipe.cuisine}} </p>

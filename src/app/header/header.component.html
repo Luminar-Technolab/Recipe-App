@@ -26,7 +26,7 @@
           <ul class="dropdown-menu">
             @if (isLoggedIn) {
               <li><a class="dropdown-item" routerLink="/saved-recipes">Your Collection</a></li>
-              <li><button class="dropdown-item" >Logout</button></li>
+              <li><button class="dropdown-item" (click)="logout()" >Logout</button></li>
             }@else {
               <li><a class="dropdown-item" routerLink="/login">Login</a></li>
               <li><a class="dropdown-item" routerLink="/register">Register</a></li>

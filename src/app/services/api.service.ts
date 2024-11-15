@@ -65,4 +65,10 @@ export class ApiService {
    deleteSavedRecipeAPI (id:any){
     return this.http.delete(`${this.server_url}/${id}/remove-saved-recipe`,this.appendToken())
    }
+
+   //download-recipe/:id/add
+   saveDownloadRecipeAPI(recipeId:any){
+    return this.http.get(`${this.server_url}/download-recipe/${recipeId}/add`,this.appendToken())
+   }
+   
 }
