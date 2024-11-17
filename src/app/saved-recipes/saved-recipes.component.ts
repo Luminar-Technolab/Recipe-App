@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { ApiService } from '../services/api.service';
 import { RouterLink } from '@angular/router';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-saved-recipes',
   standalone: true,
-  imports: [HeaderComponent,RouterLink],
+  imports: [HeaderComponent,RouterLink,FooterComponent],
   templateUrl: './saved-recipes.component.html',
   styleUrl: './saved-recipes.component.css'
 })

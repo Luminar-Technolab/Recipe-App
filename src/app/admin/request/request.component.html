@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="row">
+        <div style="height: 100vh;width: fit-content;" class="col-lg-2 bg-success text-light d-flex flex-column p-3 shadow">
+            <h5 class="mb-5 text-warning border rounded p-4"><i class="fa-solid fa-graduation-cap me-1"></i>Cookpedia <br> Admin</h5>
+            <a class="text-decoration-none text-light fw-bolder mb-4" routerLink="/admin"><i class="fa-solid fa-chart-simple"></i> Dashboard</a>
+            <a class="text-decoration-none text-light fw-bolder mb-4" routerLink="/admin/recipe-list"><i class="fa-solid fa-bowl-food"></i> Recipes </a>
+            <a class="text-decoration-none text-light fw-bolder mb-4" routerLink="/admin/users"><i class="fa-solid fa-users"></i> Users</a>
+            <a class="text-decoration-none text-light fw-bolder mb-4" routerLink="/admin/download-list"><i class="fa-solid fa-download"></i> Downloads</a>
+            <a class="text-decoration-none text-light fw-bolder" routerLink="/admin/request"><i class="fa-solid fa-message"></i> Requests</a>
+        </div>
+        <div class="col">
+            <h1 class="text-center">All Client Testimony List</h1>
+            <table class="table shadow my-5">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Message</th>
+                        <th>Action to Taken</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (request of allRequests; track $index; let i=$index;) {
+                        <tr>
+                            <td>{{i+1}}</td>
+                            <td>{{request.name}}</td>
+                            <td>{{request.email}}</td>
+                            <td>{{request.message}}</td>
+                            <td>
+                                <div class="d-flex">
+                                    <button class="btn btn-success mx-2"><i class="fa-solid fa-check"></i></button>
+                                    <button class="btn btn-danger"><i class="fa-solid fa-x"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

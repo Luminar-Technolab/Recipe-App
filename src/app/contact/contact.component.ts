@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from '../header/header.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [FormsModule,HeaderComponent],
+  imports: [FormsModule,HeaderComponent,FooterComponent],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })

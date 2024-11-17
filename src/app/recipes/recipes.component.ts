@@ -5,11 +5,12 @@ import { SearchPipe } from '../pipes/search.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { HeaderComponent } from '../header/header.component';
 import { Router } from '@angular/router';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-recipes',
   standalone: true,
-  imports: [FormsModule,SearchPipe,NgxPaginationModule,HeaderComponent],
+  imports: [FormsModule,SearchPipe,NgxPaginationModule,HeaderComponent,FooterComponent],
   templateUrl: './recipes.component.html',
   styleUrl: './recipes.component.css'
 })

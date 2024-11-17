@@ -10,6 +10,10 @@ import { ViewRecipeComponent } from './view-recipe/view-recipe.component';
 
 export const routes: Routes = [
     {
+        path:'admin',
+        loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule)
+    },
+    {
         path:'',component:HomeComponent,title:'Home Page'
     },
     {
