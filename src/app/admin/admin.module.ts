@@ -28,7 +28,6 @@ import { SearchPipe } from '../pipes/search.pipe';
     AdminRoutingModule,
     FormsModule,
     SearchPipe
-    
   ]
 })
 export class AdminModule { }

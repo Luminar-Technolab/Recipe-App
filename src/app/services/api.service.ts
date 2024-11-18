@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ApiService {
 
-  server_url:string = "http://localhost:3000"
+  server_url:string = "http://localhost:4000"
   constructor(private http:HttpClient) { }
 
   getAllRecipesAPI(){
@@ -70,5 +70,14 @@ export class ApiService {
    saveDownloadRecipeAPI(recipeId:any){
     return this.http.get(`${this.server_url}/download-recipe/${recipeId}/add`,this.appendToken())
    }
-   
+   //get-all-users
+   getAllUsersAPI(){
+    return this.http.get(`${this.server_url}/get-all-users`,this.appendToken())
+
+   }
+   //get-all-downloads
+   getAllDownloadsAPI(){
+    return this.http.get(`${this.server_url}/get-all-downloads`,this.appendToken())
+
+   }
 }

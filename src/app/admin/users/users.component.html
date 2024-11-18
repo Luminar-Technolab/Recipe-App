@@ -10,6 +10,31 @@
         </div>
         <div class="col">
             <h1>Users List</h1>
+            <table class="table shadow my-5">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Action to Taken</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (user of allUsers; track $index; let i=$index;) {
+                        <tr>
+                            <td>{{i+1}}</td>
+                            <td>{{user.username}}</td>
+                            <td>{{user.email}}</td>
+                            <td>
+                                <div class="d-flex">
+                                    <button class="btn "><i class="fa-solid fa-trash text-danger"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

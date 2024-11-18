@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-download-list',
@@ -7,4 +8,22 @@ import { Component } from '@angular/core';
 })
 export class DownloadListComponent {
 
+  allDownloads:any = []
+  constructor(private api:ApiService){}
+
+  ngOnInit(){
+    this.getAllDownloads()
+  }
+  getAllDownloads(){
+    this.api.getAllDownloadsAPI().subscribe({
+      next:(res:any)=>{
+        console.log(res);
+        this.allDownloads = res
+      },
+      error:(reason:any)=>{
+        console.log(reason);
+        
+      }
+    })
+  }
 }

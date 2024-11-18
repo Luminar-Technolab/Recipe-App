@@ -14,22 +14,21 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Cuisine</th>
-                        <th>Count</th>
-                        <th>User</th>
+                        <th>RecipeId</th>
+                        <th>Download Count</th>
+                        <th>UserId</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td><img width="70px" height="70px" src="" alt=""></td>
-                        <td> name </td>
-                        <td> cuisine</td>
-                        <td>count</td>
-                        <td>user</td>
-                    </tr>
+                    @for (download of allDownloads; track $index;let i=$index;) {
+                        <tr>
+                            <td>{{i+1}}</td>
+                            <td> <span class="btn btn-link">{{download.recipeId}} </span></td>
+                            <td> {{download.count}}</td>
+                            <td><span class="btn btn-link">{{download.userId}}</span></td>
+                        </tr>
+                    }
+                    
                 </tbody>
             </table>
         </div>

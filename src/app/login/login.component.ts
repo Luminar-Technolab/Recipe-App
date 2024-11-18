@@ -22,7 +22,12 @@ export class LoginComponent {
       next:((res:any)=>{
         sessionStorage.setItem("user",JSON.stringify(res.user))
         sessionStorage.setItem("token",res.token)
-        this.router.navigateByUrl('/')
+        if(res.user.role=="user"){
+          this.router.navigateByUrl('/')
+        }else{
+          this.router.navigateByUrl('/admin')
+        }
+       
       }),
       error:((err:any)=>{
         alert(err.error)
