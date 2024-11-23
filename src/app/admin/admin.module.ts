@@ -11,6 +11,11 @@ import { RequestComponent } from './request/request.component';
 import { CookpediaAdminComponent } from './cookpedia-admin/cookpedia-admin.component';
 import { FormsModule } from '@angular/forms';
 import { SearchPipe } from '../pipes/search.pipe';
+import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -21,13 +26,18 @@ import { SearchPipe } from '../pipes/search.pipe';
     ManageRecipeComponent,
     UsersComponent,
     DownloadListComponent,
-    RequestComponent
+    RequestComponent,
+    EditRecipeComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
-    SearchPipe
+    SearchPipe,
+    HighchartsChartModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class AdminModule { }

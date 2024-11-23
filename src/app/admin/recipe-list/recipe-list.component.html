@@ -34,8 +34,8 @@
                             <td> {{recipe.cuisine}}</td>
                             <td>
                                 <div class="d-flex">
-                                    <a routerLink="/admin/recipe/10/edit" class="btn"> <i class="fa-solid fa-edit text-primary"></i> </a>
-                                    <button class="btn"> <i class="fa-solid fa-trash text-danger ms-3"></i> </button>
+                                    <a routerLink="/admin/recipe/{{recipe._id}}/edit" class="btn"> <i class="fa-solid fa-edit text-primary"></i> </a>
+                                    <button (click)="removeRecipe(recipe._id)" class="btn"> <i class="fa-solid fa-trash text-danger ms-3"></i> </button>
                                 </div>
                             </td>
                         </tr>

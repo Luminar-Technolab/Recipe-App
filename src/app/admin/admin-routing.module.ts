@@ -7,6 +7,7 @@ import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { UsersComponent } from './users/users.component';
 import { RequestComponent } from './request/request.component';
 import { CookpediaAdminComponent } from './cookpedia-admin/cookpedia-admin.component';
+import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
 
 const routes: Routes = [
   

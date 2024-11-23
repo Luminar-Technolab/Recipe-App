@@ -1,16 +1,77 @@
 <div class="container-fluid">
     <div class="row">
-        <div style="height: 100vh;width: fit-content;" class="col-lg-2 bg-success text-light d-flex flex-column p-3 shadow">
-            <h5 class="mb-5 text-warning border rounded p-4"><i class="fa-solid fa-graduation-cap me-1"></i>Cookpedia <br> Admin</h5>
-            <a class="text-decoration-none text-light fw-bolder mb-4" routerLink="/admin"><i class="fa-solid fa-chart-simple"></i> Dashboard</a>
-            <a class="text-decoration-none text-light fw-bolder mb-4" routerLink="/admin/recipe-list"><i class="fa-solid fa-bowl-food"></i> Recipes </a>
-            <a class="text-decoration-none text-light fw-bolder mb-4" routerLink="/admin/users"><i class="fa-solid fa-users"></i> Users</a>
-            <a class="text-decoration-none text-light fw-bolder mb-4" routerLink="/admin/download-list"><i class="fa-solid fa-download"></i> Downloads</a>
-            <a class="text-decoration-none text-light fw-bolder" routerLink="/admin/request"><i class="fa-solid fa-message"></i> Requests</a>
-            <button class="btn text-light fw-bolder mt-auto">Logout <i class="fa-solid fa-right-from-bracket"></i></button>
-        </div>
+        @if (open) {
+            <div  style="height: 100vh;width: fit-content;" class="col-lg-2 bg-success text-light d-flex flex-column p-3 shadow">
+                <h5 class="mb-5 text-warning border rounded p-4"><i class="fa-solid fa-graduation-cap me-1"></i>Cookpedia <br> Admin</h5>
+                <a class="text-decoration-none text-light fw-bolder mb-4" routerLink="/admin"><i class="fa-solid fa-chart-simple"></i> Dashboard</a>
+                <a class="text-decoration-none text-light fw-bolder mb-4" routerLink="/admin/recipe-list"><i class="fa-solid fa-bowl-food"></i> Recipes </a>
+                <a class="text-decoration-none text-light fw-bolder mb-4" routerLink="/admin/users"><i class="fa-solid fa-users"></i> Users</a>
+                <a class="text-decoration-none text-light fw-bolder mb-4" routerLink="/admin/download-list"><i class="fa-solid fa-download"></i> Downloads</a>
+                <a class="text-decoration-none text-light fw-bolder" routerLink="/admin/request"><i class="fa-solid fa-message"></i> Requests</a>
+            </div>
+        }
+        
         <div class="col">
-            <h1>welcome admin</h1>
+            <!-- navbar -->
+            <div class="d-flex justify-content-between">
+                <h1> <button (click)="menuClicked()" class="btn fw-bolder"><i class="fa-solid fa-bars"></i></button> Admin Dashboard</h1>
+                <div class="dropdown">
+                    <button class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="fa-solid fa-user"></i>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><button (click)="logout()" class="btn fw-bolder ">Logout <i class="fa-solid fa-right-from-bracket"></i></button></li>
+                    </ul>
+                  </div>
+                
+            </div>
+            <!-- metrics -->
+             <div class="d-flex justify-content-evenly mt-2">
+                <div class="d-flex align-items-center bg-danger text-light p-3 rounded">
+                    <i class="fa-solid fa-users mx-2 fa-3x"></i>
+                    <div>
+                        <h3>Users</h3>
+                        <h2>{{userCount}}</h2>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center bg-primary text-light p-3 rounded">
+                    <i class="fa-solid fa-bowl-food mx-2 fa-3x"></i>
+                    <div>
+                        <h3>Recipes</h3>
+                        <h2>{{recipeCount}}</h2>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center bg-warning text-light p-3 rounded">
+                    <i class="fa-solid fa-download mx-2 fa-3x"></i>
+                    <div>
+                        <h3>Downloads</h3>
+                        <h2>{{downloadCount}}</h2>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center bg-info text-light p-3 rounded">
+                    <i class="fa-solid fa-message mx-2 fa-3x"></i>
+                    <div>
+                        <h3>Notifications</h3>
+                        <h5>You have <a routerLink="/admin/request" class="text-danger">{{requestCount}}</a> new requests!!!</h5>
+                    </div>
+                </div>
+             </div>
+             <div class="row mt-5">
+                <div class="col-lg-8">
+                    <highcharts-chart  [Highcharts]="Highcharts" [options]="chartOptions" style="width: 100%; height: 400px; display: block;"> 
+                    </highcharts-chart>
+                </div>
+                <div class="col-lg-4">
+                    
+                    <div>
+                        <mat-card class="demo-inline-calendar-card">
+                            <mat-calendar [(selected)]="selected"></mat-calendar>
+                        </mat-card>
+                    </div>
+                    <!-- <h4 class="text-primary mt-1"><i class="fa-solid fa-message"></i> Notifications</h4>
+                    <p class="fw-bolder">You have <a routerLink="/admin/request" class="text-danger">{{requestCount}}</a> new requests!!! </p> -->
+                </div>
+             </div>
         </div>
     </div>
 </div>

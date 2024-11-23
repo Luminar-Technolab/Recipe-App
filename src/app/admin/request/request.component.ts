@@ -19,4 +19,10 @@ export class RequestComponent {
       this.allRequests = res
     })
   }
+
+  updateStatus(id:string,status:string){
+    this.api.editTestimonyAPI(id,status).subscribe((res:any)=>{
+      this.getAllRequest()
+    })
+  }
 }

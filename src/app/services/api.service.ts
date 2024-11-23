@@ -1,5 +1,7 @@
 import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Recipe } from '../admin/interfaces/recipe';
+import { RecipeModel } from '../admin/recipeModel';
 
 @Injectable({
   providedIn: 'root'
@@ -78,6 +80,24 @@ export class ApiService {
    //get-all-downloads
    getAllDownloadsAPI(){
     return this.http.get(`${this.server_url}/get-all-downloads`,this.appendToken())
+   }
 
+   //add-recipe
+   addRecipeAPI(recipeDetails:RecipeModel){
+    return this.http.post(`${this.server_url}/add-recipe`,recipeDetails,this.appendToken())
+   }
+
+   //recipe/:id/edit
+   editRecipeAPI(id:any,recipeDetails:RecipeModel){
+    return this.http.put(`${this.server_url}/recipe/${id}/edit`,recipeDetails,this.appendToken())
+   }
+   //recipe/:id/remove
+   deleteRecipeAPI(id:any){
+    return this.http.delete(`${this.server_url}/recipe/${id}/remove`,this.appendToken())
+   }
+
+   //testimony/:id/edit
+   editTestimonyAPI(id:string,status:string){
+    return this.http.get(`${this.server_url}/testimony/${id}/edit?status=${status}`,this.appendToken())
    }
 }

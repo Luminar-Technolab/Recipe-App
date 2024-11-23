@@ -7,10 +7,11 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SavedRecipesComponent } from './saved-recipes/saved-recipes.component';
 import { ViewRecipeComponent } from './view-recipe/view-recipe.component';
+import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
     {
-        path:'admin',
+        path:'admin', canActivate:[authGuard],
         loadChildren:()=>import('./admin/admin.module').then(m=>m.AdminModule)
     },
     {
@@ -32,9 +33,9 @@ export const routes: Routes = [
         path:'register',component:RegisterComponent,title:'Register Page'
     },
     {
-        path:':id/view-recipe',component:ViewRecipeComponent,title:'View Recipe Page'
+        path:':id/view-recipe',canActivate:[authGuard],component:ViewRecipeComponent,title:'View Recipe Page'
     },
     {
-        path:'saved-recipes',component:SavedRecipesComponent,title:'Save Recipes Page'
+        path:'saved-recipes',canActivate:[authGuard],component:SavedRecipesComponent,title:'Save Recipes Page'
     }
 ];

@@ -31,7 +31,8 @@ export class HomeComponent {
   }
   getAllTestimony(){
     this.api.getAllTestimony().subscribe((res:any)=>{
-      this.allTestimony = res
+      
+      this.allTestimony = res.filter((item:any)=>item.status=="Approved")
       console.log(this.allTestimony);
       
     })
